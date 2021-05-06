@@ -12,8 +12,13 @@ void main()
 	char* arr[] = { "George", "Albert", "Tina", "Xavier", "Roger", "Tim", "William" };
 	int n = sizeof(arr) / sizeof(arr[0]);
 	int i;
+	printf("Original given array:\n");
+	for(i = 0;i < n;i++)
+	{
+		printf("%d. %s\n",i + 1,arr[i]);
+	}
 	qsort(arr, n, sizeof(arr[0]), compare);
-	printf("\nSorted array is\n");
+	printf("\nGiven array sorted:\n");
 	for (i = 0; i < n; i++)
 	{
 		printf("%d: %s \n", i + 1, arr[i]);
