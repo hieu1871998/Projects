@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-void pluralizer(char name[])
+void pluralizer(char *name)
 {
 	int length, i;
 	length = strlen(name);
-	if(name[length - 1] == 'y')
+	char *ptr;
+	ptr = name + strlen(name) - 1;
+	if(*ptr == 'y')
 	{
-		name[length - 1] = 'i';
+		*ptr = 'i';
 		strcat(name,"es");
 	}
-	else if(name[length - 1] == 's' 
-	|| (name[length - 2] == 's' && name[length - 1] == 'h')
-	|| (name[length - 2] == 'c' && name[length - 1] == 'h'))
+	else if(*ptr == 's' 
+	|| (*ptr - 1 == 's' && *ptr == 'h')
+	|| (*ptr - 1 == 'c' && *ptr == 'h'))
 	{
 		strcat(name,"es");
 	}
@@ -45,5 +47,4 @@ void main()
 	{
 		printf("%c",*bPtr++);
 	}
-//	printf("Plural form:\n%s\n%s",animalName,birdName);
 }
