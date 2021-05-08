@@ -3,15 +3,16 @@
 
 void main()
 {
-	int numArray[1000], i, n, min, max;
+	int *numArray, i, n, min, max;
 	printf("Enter array size: ");
 	scanf("%d",&n);
+	numArray = (int*)malloc(n*(sizeof(int)));
 	printf("Enter values: \n");
 	for(i = 0;i < n;i++)
 	{
-		scanf("%d",&numArray[i]);
+		scanf("%d",numArray + i);
 	}
-	min = max = numArray[0];
+	min = max = *(numArray+0);
 	for(i = 0;i < n;i++)
 	{
 		if(*(numArray + i) < min)
