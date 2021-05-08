@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
+
+int toupper();
 
 void main()
 {
 	char myStr[1000], *ptr;
-	int i, countVow = 0, countCon = 0;
+	int i, countVow = 0, countCon = 0, countSpace = 0;
 	printf("Enter your line: \n");
-	scanf("%s",&myStr);
+	gets(myStr);
 	ptr = myStr;
 	for(i = 0;i < strlen(myStr);i++)
 	{
@@ -19,6 +20,10 @@ void main()
 		if(*ptr == 'U' || *ptr == 'E' || *ptr == 'O' || *ptr == 'A' || *ptr == 'I')
 		{
 			countVow++;
+		}
+		else if(*ptr == ' ')
+		{
+			countSpace++;
 		}
 		else
 		{
