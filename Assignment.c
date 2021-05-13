@@ -82,6 +82,10 @@ void outputStudent(student *list){
 }
 
 void sortStudent(student *list){
+	if(check(list)){
+		printf("\n|CHUA NHAP DANH SACH SINH VIEN|\n");
+		return;
+	}
 	student temp;
 	int i = 0, j = 0;
 	for(i = 0 ; i < listLength ; i++){
@@ -96,43 +100,10 @@ void sortStudent(student *list){
 	outputStudent(list);
 }
 
-void analyzeStudent(student *list){
-	int *count = (int*)malloc(listLength * sizeof(int));
-	int i = 0, j = 0;
-	for(i = 0 ; i < listLength ; i++){
-		count[i] = 1;
-	}
-	for(i = 0; i < listLength ; i++){
-		for(j = i + 1 ; j < listLength ; j++){
-			if(count[j] > 0 && strcmp(list[i].country,list[j].country) == 0){
-				count[i]++;
-				count[j]--;
-			}
-		}
-	}
-	for(i = 0 ; i < listLength ; i++){
-		if(count[i] > 0){
-			printf(" + %d sinh vien que %s\n",count[i],list[i].country);
-		}
-	}
+void analyzeStudent(){
 }
 
-void searchStudent(student *list){
-	int i, j, m;
-	char c[20];
-	printf("Nhap que quan cua sinh vien can tim: ");
-	fflush(stdin);
-	gets(c);
-	printf("Nhap so diem thap nhat: ");
-	scanf("%d",&m);
-	printf("Sinh vien can tim:\n");
-	printf("---------------------------------------------\n");
-	for(i = 0 ; i < listLength ; i++){
-		if(strcmp(list[i].country,c) == 0 && list[i].mark >= m){
-			printf("|%-14s|%-14s|%-8d|%-4d|\n",list[i].name,list[i].country,list[i].birthday,list[i].mark);
-			printf("---------------------------------------------\n");
-		}
-	}
+void searchStudent(){
 }
 
 void saveFile(){
@@ -162,12 +133,10 @@ void main(){
 			sortStudent(list);
 			break;
 		case 3:
-			printf("3. Phan tich:\n");
-			analyzeStudent(list);
+			analyzeStudent();
 			break;
 		case 4:
-			printf("4. Tim kiem sinh vien:\n");
-			searchStudent(list);
+			searchStudent();
 			break;
 		case 5:
 			saveFile();
@@ -200,5 +169,3 @@ void main(){
 		}
 	} while (c != 'y' || c != 'Y' || c != 'n' || c != 'N' || c != 'c' || c != 'C');
 }
-
-
